@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class enemyDamage : MonoBehaviour
@@ -9,12 +10,16 @@ public class enemyDamage : MonoBehaviour
     private float MaxTimeForNextMove = 1.5f;
     public playerMovement sn;
     private BoxCollider2D box;
+    private AudioSource explosion;
+    private GameObject audioSource;
     // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
         sn = FindObjectOfType<playerMovement>();
         box = FindObjectOfType<BoxCollider2D>();
+        audioSource = GameObject.FindGameObjectWithTag("audio");
+        explosion = audioSource.GetComponent<AudioSource>();
     }
 
         // Update is called once per frame
@@ -32,6 +37,7 @@ public class enemyDamage : MonoBehaviour
                 c.enabled = false;
             }
             animator.SetBool("isDead", true);
+            explosion.Play(0);
             Destroy(gameObject, 0.5f);
             if (gameObject.name == "tripleSlime")
             {

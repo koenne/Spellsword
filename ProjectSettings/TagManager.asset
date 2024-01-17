@@ -9,6 +9,7 @@ TagManager:
   - enemy
   - playerAttack
   - slimeJump
+  - audio
   layers:
   - Default
   - TransparentFX
