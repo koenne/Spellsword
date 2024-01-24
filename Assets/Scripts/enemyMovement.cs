@@ -5,7 +5,7 @@ using UnityEngine;
 public class enemyMovement : MonoBehaviour
 {
 
-    private float moveSpeed = 7f;
+    private float moveSpeed = 8.5f;
     private Transform player;
     private GameObject playerObject;
     private Rigidbody2D rb;
@@ -98,13 +98,13 @@ public class enemyMovement : MonoBehaviour
     }
     void jump()
     {
-        if (player.position.y > targetPosition.y + 2.5 && isGrounded && bigJump && distance < 8)
+        if (player.position.y > targetPosition.y && isGrounded && bigJump && distance < 6)
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpHeight);
         }
         else if (isGrounded)
         {
-            rb.velocity = new Vector2(rb.velocity.x, 1);
+            rb.velocity = new Vector2(rb.velocity.x, 1.5f);
         }
     }
 }

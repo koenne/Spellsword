@@ -9,7 +9,7 @@ public class playerStats : MonoBehaviour
     public GameObject emptyHeart;
     public GameObject canvas;
     public GameObject[] amountOfHearts;
-    private int playerhealth;
+    public int playerhealth;
     private int playerCurrentHealth;
     private float amount = -8;
     private int healthCheck;
@@ -17,7 +17,7 @@ public class playerStats : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playerhealth = 5;
+        //playerhealth = 5;
         healthCheck = playerhealth;
         Array.Resize(ref amountOfHearts, playerhealth);
         setHearts(playerhealth);

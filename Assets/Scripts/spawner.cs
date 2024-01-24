@@ -21,6 +21,7 @@ public class spawner : MonoBehaviour
     private string[] wave2 = { "slime", "10", "bee", "20", "tripleSlime", "5" };
     private string[] wave3 = { "slime", "5", "bee", "10", "tripleSlime", "10" };
     private string[] wave4 = { "bee", "25" };
+    private string[] wave5 = { "slime", "10", "bee", "10", "tripleSlime", "5" };
     private int loop = 0;
     private int loop2 = 0;
     private int loop3 = 0;
@@ -105,6 +106,12 @@ public class spawner : MonoBehaviour
                         spawning(wave4);
                         break;
                     case 5:
+                        Array.Resize(ref amount, wave5.Length / 2);
+                        Array.Resize(ref enemyArray, wave5.Length / 2);
+                        Debug.Log("Now wave 5 with the lenght of: " + wave5.Length / 2);
+                        spawning(wave5);
+                        break;
+                    case 6:
                         whatWave = 1;
                         break;
                 }
@@ -124,7 +131,6 @@ public class spawner : MonoBehaviour
     }
     void spawning(string[] wave)
     {
-        MovementTimer = 0f;
         foreach (string enemy in wave)
         { 
             if(loop % 2 == 0)
@@ -178,5 +184,13 @@ public class spawner : MonoBehaviour
         GameObject[] npcs = GameObject.FindGameObjectsWithTag("enemy");
         numberOfEnemies = npcs.Length;
         Debug.Log(numberOfEnemies);
+    }
+    public void spawnSlime(Vector3 spawnArea)
+    {
+        for(int i = 0; i < 3; i++)
+        {
+            Debug.Log(i);
+            Instantiate(enemies[0], spawnArea, enemies[0].rotation);
+        }
     }
 }
